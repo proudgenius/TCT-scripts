@@ -1,0 +1,90 @@
+Sub ImportTextToDescriptionColumnAndQuit
+    Dim oDoc As Object
+    Dim oSheet As Object
+    Dim sDocPath As String
+    Dim sFilePath As String
+    Dim sFileContent As String
+    Dim vLines As Variant
+    Dim nDescColumn As Integer
+    Dim i As Integer
+    
+    ' Get the current document and active sheet
+    oDoc = ThisComponent
+    oSheet = oDoc.Sheets(0)
+    
+    ' Get the directory of the current document
+    sDocPath = GetDocumentPath(oDoc.URL)
+    
+    ' Construct the full path to the text file
+    sFilePath = sDocPath & "clip_names.txt"
+    
+    ' Read the contents of the file
+    sFileContent = ReadTextFile(sFilePath)
+    
+    ' Split the content into lines
+    vLines = Split(sFileContent, Chr(10))
+    
+    ' Find the "Description" column
+    nDescColumn = -1
+    For i = 0 To oSheet.Columns.Count - 1
+        If oSheet.getCellByPosition(i, 0).String = "Description" Then
+            nDescColumn = i
+            Exit For
+        End If
+    Next i
+    
+    ' If "Description" column not found, exit
+    If nDescColumn = -1 Then
+        MsgBox "Description column not found!", 16, "Error"
+        Exit Sub
+    End If
+    
+    ' Insert each line into its own row in the Description column
+    For i = 0 To UBound(vLines)
+        If Trim(vLines(i)) <> "" Then
+            oSheet.getCellByPosition(nDescColumn, i + 1).String = Trim(vLines(i))
+        End If
+    Next i
+    
+    ' Save the document
+    oDoc.store()
+    
+    ' Close LibreOffice Calc
+    Dim oDesktop As Object
+    oDesktop = CreateUnoService("com.sun.star.frame.Desktop")
+    oDesktop.terminate()
+End Sub
+
+Function GetDocumentPath(sUrl As String) As String
+    Dim i As Integer
+    Dim sPath As String
+    
+    sPath = sUrl
+    For i = Len(sPath) To 1 Step -1
+        If Mid(sPath, i, 1) = "/" Then
+            GetDocumentPath = Left(sPath, i)
+            Exit Function
+        End If
+    Next i
+    
+    ' If no slash found, return empty string
+    GetDocumentPath = ""
+End Function
+
+Function ReadTextFile(filePath As String) As String
+    Dim fileNum As Integer
+    Dim content As String
+    Dim line As String
+    
+    fileNum = FreeFile()
+    Open filePath For Input As #fileNum
+    
+    Do Until EOF(fileNum)
+        Line Input #fileNum, line
+        content = content & line & Chr(10)
+    Loop
+    
+    Close #fileNum
+    
+    ReadTextFile = content
+End Function

@@ -2,7 +2,9 @@
 
 These Python scripts streamline the ingest and conforming process for **The College Tour** TV show on Amazon Prime using **DaVinci Resolve**.
 
-**Project Links:**
+**Created by: Cristian Omar Jimenez - [My Website](https://www.cristianjimenez.com/) | [IMDb Page](https://www.imdb.com/name/nm10694722/)**
+
+**Where to Watch:**
 - [The College Tour Website](https://www.thecollegetour.com/)
 - [Watch on Amazon Prime](https://www.amazon.com/The-College-Tour/dp/B08QMDXR7Z)
 

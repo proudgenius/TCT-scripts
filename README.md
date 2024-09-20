@@ -1,6 +1,6 @@
 # The College Tour - DaVinci Resolve Automation Scripts
 
-These Python scripts streamline the ingest and conforming process for **The College Tour** TV show on Amazon Prime using **DaVinci Resolve**.
+These Python and LibreOffice Calc scripts streamline the ingest and conforming process for **The College Tour** TV show on Amazon Prime using **DaVinci Resolve**.
 
 **Created by: Cristian Omar Jimenez - [My Website](https://www.cristianjimenez.com/) | [IMDb Page](https://www.imdb.com/name/nm10694722/)**
 

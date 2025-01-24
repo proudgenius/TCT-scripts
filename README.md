@@ -53,6 +53,18 @@ After importing the metadata CSV and populating description names, this script a
 
 These scripts are designed to speed up and automate tasks, ensuring a smoother workflow for **The College Tour** production.
 
+If you are having issues with the enovrmental paths, try usting hard paths instead of realative paths like the following example.
+
+`RESOLVE_SCRIPT_API=C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Developer\Scripting`
+
+`RESOLVE_SCRIPT_LIB=C:\Program Files\Blackmagic Design\DaVinci Resolve\fusionscript.dll`
+
+`PYTHONPATH=%PYTHONPATH%;%RESOLVE_SCRIPT_API%\Modules\;C:\ProgramData\Blackmagic Design\DaVinci Resolve\Support\Developer\Scripting\Modules\`
+
+
+![SystemPropertiesAdvanced](https://github.com/user-attachments/assets/0e7beb17-25f9-4c3e-85e9-c1996034d423)
+
+
 --- 
 
 Let me know if you'd like to make any further adjustments!

@@ -15,7 +15,7 @@ These Python and LibreOffice Calc scripts streamline the ingest and conforming p
 
 ## Script Descriptions
 
-### 1. **TCT_EDL_processor_v1.1.py**
+### 1. **TCT_EDL_processor_v1.2.py**
 Cleans up the EDL file from Adobe Premiere Pro for seamless import into DaVinci Resolve's Scene Cut Detection tool. It also generates a `clip_names.txt` file for easy copy-paste into the metadata CSV export from DaVinci. Additionally, it navigates to the media storage location automatically, avoiding unnecessary folder navigation.
 
 **Features:**

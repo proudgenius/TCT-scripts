@@ -150,6 +150,17 @@ def navigate_to_folder_in_media_storage(resolve, folder_path):
     else:
         print("Error: Unable to access Media Storage.")
 
+def switch_to_media_page(resolve):
+    """
+    Switch DaVinci Resolve to the Media page
+    """
+    page = resolve.GetCurrentPage()
+    if page != "media":
+        resolve.OpenPage("media")
+        print("Switched to Media page")
+    else:
+        print("Already on Media page")
+
 def main():
     try:
         import DaVinciResolveScript as dvr_script
@@ -168,6 +179,9 @@ def main():
     
     # Navigate to the project folder in Media Storage
     navigate_to_folder_in_media_storage(resolve, project_folder)
+    
+    # Switch to Media page
+    switch_to_media_page(resolve)
 
 if __name__ == "__main__":
     main()
